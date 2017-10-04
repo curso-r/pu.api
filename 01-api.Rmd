@@ -231,7 +231,7 @@ devtools::install('preditorIMDb')
 
 Agora podemos rodar nossa API com base no pacote, fazendo
 
-```{r}
+```{r eval=FALSE}
 opencpu::ocpu_start_app('preditorIMDb')
 ```
 
@@ -332,6 +332,7 @@ arq <- captcha_download_tjmg()
 ```
 
 ```{r}
+library(decryptr)
 arq <- "./captcha5fdb51a0b41b.jpeg"
 arq %>% 
   read_captcha() %>% 
@@ -339,7 +340,7 @@ arq %>%
 ```
 
 
-```{bash}
+```{bash eval=FALSE}
 (echo -n '{"img": "'; base64 "captcha5fdb51a0b41b.jpeg"; echo '"}') |
 (curl -s -H "Content-Type: application/json" -d @- http://localhost:8888/predict_tjmg) |
 sed 's/[^[:alnum:]]//g'
@@ -351,7 +352,7 @@ sed 's/[^[:alnum:]]//g'
 
 Ou, em outra sessão do R
 
-```{r}
+```{r eval=FALSE}
 path <- 'captcha5fdb51a0b41b.jpeg'
 base64 <- base64enc::base64encode(readr::read_file_raw(path))
 r <- httr::POST('http://localhost:8888/predict_tjmg', 
