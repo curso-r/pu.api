@@ -284,7 +284,9 @@ Agora podemos rodar nossa API com base no pacote, fazendo
 
 ```r
 opencpu::ocpu_start_app('preditorIMDb')
-## Error in loadNamespace(name): there is no package called 'opencpu'
+## Loading config from /home/travis/R/Library/opencpu/config/defaults.conf
+## Loading config from /home/travis/.local/share/opencpu/user.conf
+## Error in loadNamespace(name): there is no package called 'preditorIMDb'
 ```
 
 Para ver o código da função, basta rodar
@@ -335,7 +337,7 @@ Assim, basta acessar http://cran.ocpu.io para ter todos os pacotes do R em suas 
 r <- httr::POST("http://cran.ocpu.io/praise/R/praise/json")
 httr::content(r)
 ## [[1]]
-## [1] "You are splendid!"
+## [1] "You are finest!"
 ```
 
 (o pacote `praise` é um gerador de elogios aleatório)
@@ -348,13 +350,12 @@ Por exemplo, o post da Curso-R chamado [Aquele 1% é deep learning](http://curso
 ```r
 r <- httr::POST("http://jtrecenti.ocpu.io/safadao/R/gen/json")
 cat(httr::content(r)[[1]])
-## meu coração era menino traquino
-## saía rin|é guardada boa la ídado gelogando
-## e a gente vai  curtir só os moiras desão
-## 
-## tá tá ficando besto esperando em transa,
-## um sorriso te amom
-## assim suparxinho não tem orguando por mim
+## se não quer me amar,
+## então pode ir embor|a
+## se eu esquecer
+## porque cuidei tem certeza tu sábratupos amada
+## é da solidão
+## vou te deixar me deixou
 ```
 
 ## Plumber em produção
@@ -430,7 +431,7 @@ r <- httr::POST('http://localhost:8888/predict_tjmg',
 ## Error in curl::curl_fetch_memory(url, handle = handle): Failed to connect to localhost port 8888: Connection refused
 httr::content(r, 'text')
 ## No encoding supplied: defaulting to UTF-8.
-## [1] "[\"meu coração era menino traquino\\nsaía rin|é guardada boa la ídado gelogando\\ne a gente vai  curtir só os moiras desão\\n\\ntá tá ficando besto esperando em transa,\\num sorriso te amom\\nassim suparxinho não tem orguando por mim\"]\n"
+## [1] "[\"se não quer me amar,\\nentão pode ir embor|a\\nse eu esquecer\\nporque cuidei tem certeza tu sábratupos amada\\né da solidão\\nvou te deixar me deixou\"]\n"
 ```
 
 ## Fazendo mais com o plumber
