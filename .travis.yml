@@ -1,6 +1,14 @@
 language: r
 cache: packages
 
+addons:
+  apt:
+    packages:
+      - libapparmor-dev
+      - libprotobuf-dev
+      - protobuf-compiler
+      - libicu-dev
+
 branches:
   only:
   - master
