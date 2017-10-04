@@ -16,10 +16,12 @@ LazyData: true
 Remotes:
     curso-r/puBuild,
     decryptr/decryptr,
+    decryptr/decryptrModels,
     hadley/emo
 Imports:
     puBuild,
     tutorial,
     emo,
-    decryptr
+    decryptr,
+    decryptrModels
 RoxygenNote: 6.0.1
