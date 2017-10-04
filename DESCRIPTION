@@ -24,5 +24,6 @@ Imports:
     emo,
     decryptr,
     decryptrModels,
-    ggplot2movies
+    ggplot2movies,
+    tidyverse
 RoxygenNote: 6.0.1
