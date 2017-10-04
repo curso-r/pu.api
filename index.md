@@ -298,7 +298,7 @@ Assim, basta acessar http://cran.ocpu.io para ter todos os pacotes do R em suas 
 r <- httr::POST("http://cran.ocpu.io/praise/R/praise/json")
 httr::content(r)
 ## [[1]]
-## [1] "You are posh!"
+## [1] "You are impressive!"
 ```
 
 (o pacote `praise` é um gerador de elogios aleatório)
@@ -311,12 +311,25 @@ Por exemplo, o post da Curso-R chamado [Aquele 1% é deep learning](http://curso
 ```r
 r <- httr::POST("http://jtrecenti.ocpu.io/safadao/R/gen/json")
 cat(httr::content(r)[[1]])
-## hoje eu lembrei pensei em você e de tudo| e dançar
+## parei o meu carrão
+## lotado de menina
+## ligu|ei e expla
+## a futra domingu
+## fica uma ristizada pra parar
+## te deixou com você
+## você é?
+## não dei em medo uma gelada a cama
+## a gente tenho que também vaii!
 ## 
-## ainda me quer dar seu retrei
-## na pina picar bem simbora 
+## com os aminos escurigida
 ## 
-## um dia eu dispedo bom
+## e a cara puta o telindo de amar
+## butir o que tenho uma amar
+## ta hora da puta
+## eu vou você me viu outro alguém
+## mas não quero
+## par
+## <truncated>
 ```
 
 ## Plumber em produção
@@ -392,7 +405,7 @@ r <- httr::POST('http://localhost:8888/predict_tjmg',
 ## Error in curl::curl_fetch_memory(url, handle = handle): Failed to connect to localhost port 8888: Connection refused
 httr::content(r, 'text')
 ## No encoding supplied: defaulting to UTF-8.
-## [1] "[\"hoje eu lembrei pensei em você e de tudo| e dançar\\n\\nainda me quer dar seu retrei\\nna pina picar bem simbora \\n\\num dia eu dispedo bom \"]\n"
+## [1] "[\"parei o meu carrão\\nlotado de menina\\nligu|ei e expla\\na futra domingu\\nfica uma ristizada pra parar\\nte deixou com você\\nvocê é?\\nnão dei em medo uma gelada a cama\\na gente tenho que também vaii!\\n\\ncom os aminos escurigida\\n\\ne a cara puta o telindo de amar\\nbutir o que tenho uma amar\\nta hora da puta\\neu vou você me viu outro alguém\\nmas não quero\\npar\\n<truncated>\"]\n"
 ```
 
 ## Fazendo mais com o plumber
