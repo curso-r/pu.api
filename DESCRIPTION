@@ -8,7 +8,7 @@ Authors@R: c(
     person("William", "Amorim", email = "thewilliam89@gmail.com", role = "aut"),
     person("Fernando", "Correa", email = "fptcorrea@gmail.com", role = "aut"))
 Description: PACKAGE_DESCRIPTION.
-Depends: 
+Depends:
   R (>= 3.2.1)
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -17,4 +17,6 @@ Remotes:
     curso-r/puBuild
 Imports:
   puBuild,
-  tutorial
+  tutorial,
+    emo,
+    decryptr
