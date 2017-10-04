@@ -15,7 +15,8 @@ Encoding: UTF-8
 LazyData: true
 Remotes:
     curso-r/puBuild,
-    decryptr/decryptr
+    decryptr/decryptr,
+    hadley/emo
 Imports:
     puBuild,
     tutorial,
