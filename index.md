@@ -58,15 +58,35 @@ Se não tiver esse pacote, rode `install.packages("ggplot2movies")`.
 
 ```r
 library(tidyverse)
-## Error in library(tidyverse): there is no package called 'tidyverse'
+## Loading tidyverse: ggplot2
+## Loading tidyverse: tibble
+## Loading tidyverse: tidyr
+## Loading tidyverse: readr
+## Loading tidyverse: purrr
+## Loading tidyverse: dplyr
+## Conflicts with tidy packages ----------------------------------------------
+## filter(): dplyr, stats
+## lag():    dplyr, stats
 dados <- ggplot2movies::movies %>% 
   filter(!is.na(budget), budget > 0) %>% 
   select(title, year, budget, rating) %>% 
   arrange(desc(year))
-## Error in ggplot2movies::movies %>% filter(!is.na(budget), budget > 0) %>% : could not find function "%>%"
 
 dados
-## Error in eval(expr, envir, enclos): object 'dados' not found
+## # A tibble: 5,183 x 4
+##                           title  year   budget rating
+##                           <chr> <int>    <int>  <dbl>
+##  1                           90  2005     4000    9.1
+##  2              Alien Abduction  2005   600000    1.9
+##  3     All the Stage Is a World  2005    12000    7.0
+##  4            Alone in the Dark  2005 20000000    2.1
+##  5       Amityville Horror, The  2005 18000000    5.8
+##  6                  And I Lived  2005    20000    9.4
+##  7            Are We There Yet?  2005 32000000    3.5
+##  8                Ash Wednesday  2005     4999    8.6
+##  9       Assault on Precinct 13  2005 20000000    6.3
+## 10 Ballad of Jack and Rose, The  2005  1500000    6.2
+## # ... with 5,173 more rows
 ```
 
 Nosso modelo tentará prever `rating` utilizando as seguintes variáveis:
@@ -79,9 +99,26 @@ O modelo é dado por
 
 ```r
 modelo <- lm(rating ~ budget + year, data = dados)
-## Error in is.data.frame(data): object 'dados' not found
 summary(modelo)
-## Error in summary(modelo): object 'modelo' not found
+## 
+## Call:
+## lm(formula = rating ~ budget + year, data = dados)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.2325 -0.9537  0.1408  1.0482  3.9507 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  1.501e+01  2.040e+00   7.355 2.20e-13 ***
+## budget       3.645e-10  9.570e-10   0.381    0.703    
+## year        -4.469e-03  1.029e-03  -4.342 1.44e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.541 on 5180 degrees of freedom
+## Multiple R-squared:  0.003793,	Adjusted R-squared:  0.003408 
+## F-statistic: 9.861 on 2 and 5180 DF,  p-value: 5.318e-05
 ```
 
 R^2 de 0.003, nada mal (risos). Agora, vamos montar uma função que prevê a nota de um filme com base no seu orçamento e ano.
@@ -298,7 +335,7 @@ Assim, basta acessar http://cran.ocpu.io para ter todos os pacotes do R em suas 
 r <- httr::POST("http://cran.ocpu.io/praise/R/praise/json")
 httr::content(r)
 ## [[1]]
-## [1] "You are impressive!"
+## [1] "You are wicked!"
 ```
 
 (o pacote `praise` é um gerador de elogios aleatório)
@@ -311,25 +348,18 @@ Por exemplo, o post da Curso-R chamado [Aquele 1% é deep learning](http://curso
 ```r
 r <- httr::POST("http://jtrecenti.ocpu.io/safadao/R/gen/json")
 cat(httr::content(r)[[1]])
-## parei o meu carrão
-## lotado de menina
-## ligu|ei e expla
-## a futra domingu
-## fica uma ristizada pra parar
-## te deixou com você
-## você é?
-## não dei em medo uma gelada a cama
-## a gente tenho que também vaii!
+## renata ingrata trocou meu amor por uma i|besto direito
 ## 
-## com os aminos escurigida
+## tô na hora pra direysiar
 ## 
-## e a cara puta o telindo de amar
-## butir o que tenho uma amar
-## ta hora da puta
-## eu vou você me viu outro alguém
-## mas não quero
-## par
-## <truncated>
+## não posso até a meie
+## pra valertor a vente
+## que
+## pra porta manda fogo
+## 
+## blux amoretada ao seu paredão
+## bum bum bum é o tempo chão
+## fão disse o que esse novinha
 ```
 
 ## Plumber em produção
@@ -378,7 +408,7 @@ arq <- "./captcha5fdb51a0b41b.jpeg"
 arq %>% 
   read_captcha() %>% 
   plot()
-## Error in arq %>% read_captcha() %>% plot(): could not find function "%>%"
+## Error in read_captcha(.): could not find function "read_captcha"
 ```
 
 
@@ -405,7 +435,7 @@ r <- httr::POST('http://localhost:8888/predict_tjmg',
 ## Error in curl::curl_fetch_memory(url, handle = handle): Failed to connect to localhost port 8888: Connection refused
 httr::content(r, 'text')
 ## No encoding supplied: defaulting to UTF-8.
-## [1] "[\"parei o meu carrão\\nlotado de menina\\nligu|ei e expla\\na futra domingu\\nfica uma ristizada pra parar\\nte deixou com você\\nvocê é?\\nnão dei em medo uma gelada a cama\\na gente tenho que também vaii!\\n\\ncom os aminos escurigida\\n\\ne a cara puta o telindo de amar\\nbutir o que tenho uma amar\\nta hora da puta\\neu vou você me viu outro alguém\\nmas não quero\\npar\\n<truncated>\"]\n"
+## [1] "[\"renata ingrata trocou meu amor por uma i|besto direito\\n\\ntô na hora pra direysiar\\n\\nnão posso até a meie\\npra valertor a vente\\nque\\npra porta manda fogo\\n\\nblux amoretada ao seu paredão\\nbum bum bum é o tempo chão\\nfão disse o que esse novinha\"]\n"
 ```
 
 ## Fazendo mais com o plumber
