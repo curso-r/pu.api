@@ -160,7 +160,7 @@ p$run(port = 8888)
 Agora, você pode prever a nota do IMDb rodando:
 
 ```
-curl --data "http://localhost:8888/"
+curl --data "orcamento=10000&ano=1991" "http://localhost:8888/prever"
 ```
 
 ### Exercícios
@@ -198,8 +198,7 @@ Dentro da pasta `R` do pacote `preditorIMDb`, criaremos um arquivo `funs.R` com 
 #'
 #' @export
 solta_10 <- function() {
-  dados %>%
-    sample_n(10)
+  dplyr::sample_n(dados, 10)
 }
 
 #' Prevê o score do filme
@@ -221,6 +220,9 @@ Agora precisamos carregar a documentação e instalar o pacote:
 # adiciona dependencias de pacotes externos
 devtools::use_package('tidyverse', pkg = 'preditorIMDb')
 devtools::use_package('ggplot2movies', pkg = 'preditorIMDb')
+# dados
+devtools::use_data(modelo, pkg = 'preditorIMDb')
+devtools::use_data(dados, pkg = 'preditorIMDb')
 # documenta o pacote
 devtools::document('preditorIMDb')
 # instala o pacote na máquina
