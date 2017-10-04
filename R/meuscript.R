@@ -19,10 +19,3 @@ funcao_que_preve <- function(orcamento, ano) {
   d_test <- data.frame(budget = as.numeric(orcamento), year = as.numeric(ano))
   predict(modelo, newdata = d_test)
 }
-
-
-#* @get /plotar
-#* @png
-plotar <- function() {
-  plot(dados$budget, dados$rating)
-}

@@ -209,7 +209,7 @@ p$run(port = 8888)
 Agora, você pode prever a nota do IMDb rodando:
 
 ```
-curl --data "http://localhost:8888/"
+curl --data "orcamento=10000&ano=1991" "http://localhost:8888/prever"
 ```
 
 ### Exercícios
@@ -249,8 +249,7 @@ Dentro da pasta `R` do pacote `preditorIMDb`, criaremos um arquivo `funs.R` com 
 #'
 #' @export
 solta_10 <- function() {
-  dados %>%
-    sample_n(10)
+  dplyr::sample_n(dados, 10)
 }
 
 #' Prevê o score do filme
@@ -273,6 +272,9 @@ Agora precisamos carregar a documentação e instalar o pacote:
 # adiciona dependencias de pacotes externos
 devtools::use_package('tidyverse', pkg = 'preditorIMDb')
 devtools::use_package('ggplot2movies', pkg = 'preditorIMDb')
+# dados
+devtools::use_data(modelo, pkg = 'preditorIMDb')
+devtools::use_data(dados, pkg = 'preditorIMDb')
 # documenta o pacote
 devtools::document('preditorIMDb')
 # instala o pacote na máquina
@@ -284,6 +286,7 @@ Agora podemos rodar nossa API com base no pacote, fazendo
 
 ```r
 opencpu::ocpu_start_app('preditorIMDb')
+## Creating new user config file: /home/travis/.local/share/opencpu/user.conf
 ## Loading config from /home/travis/R/Library/opencpu/config/defaults.conf
 ## Loading config from /home/travis/.local/share/opencpu/user.conf
 ## Error in loadNamespace(name): there is no package called 'preditorIMDb'
@@ -337,7 +340,7 @@ Assim, basta acessar http://cran.ocpu.io para ter todos os pacotes do R em suas 
 r <- httr::POST("http://cran.ocpu.io/praise/R/praise/json")
 httr::content(r)
 ## [[1]]
-## [1] "You are finest!"
+## [1] "You are polished!"
 ```
 
 (o pacote `praise` é um gerador de elogios aleatório)
@@ -350,12 +353,18 @@ Por exemplo, o post da Curso-R chamado [Aquele 1% é deep learning](http://curso
 ```r
 r <- httr::POST("http://jtrecenti.ocpu.io/safadao/R/gen/json")
 cat(httr::content(r)[[1]])
-## se não quer me amar,
-## então pode ir embor|a
-## se eu esquecer
-## porque cuidei tem certeza tu sábratupos amada
-## é da solidão
-## vou te deixar me deixou
+## aonde eu chego a mulherada encosta
+## eu li|ga a gente dorminha
+## tá rolando chegando bem ino
+## perde que eu quero as cavadiras um dia passar
+## de casa pena pelo mais deeiro ié ter o que eu tento pra não te deixar
+## eu pode chegar no peita 
+## vai provar diferente tanto pra gente ninguém
+## í por cima
+## 
+## na raledala é que não tá pode mais semor
+## e quem não v
+## <truncated>
 ```
 
 ## Plumber em produção
@@ -431,7 +440,7 @@ r <- httr::POST('http://localhost:8888/predict_tjmg',
 ## Error in curl::curl_fetch_memory(url, handle = handle): Failed to connect to localhost port 8888: Connection refused
 httr::content(r, 'text')
 ## No encoding supplied: defaulting to UTF-8.
-## [1] "[\"se não quer me amar,\\nentão pode ir embor|a\\nse eu esquecer\\nporque cuidei tem certeza tu sábratupos amada\\né da solidão\\nvou te deixar me deixou\"]\n"
+## [1] "[\"aonde eu chego a mulherada encosta\\neu li|ga a gente dorminha\\ntá rolando chegando bem ino\\nperde que eu quero as cavadiras um dia passar\\nde casa pena pelo mais deeiro ié ter o que eu tento pra não te deixar\\neu pode chegar no peita \\nvai provar diferente tanto pra gente ninguém\\ní por cima\\n\\nna raledala é que não tá pode mais semor\\ne quem não v\\n<truncated>\"]\n"
 ```
 
 ## Fazendo mais com o plumber
