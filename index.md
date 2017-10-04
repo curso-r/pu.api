@@ -286,10 +286,6 @@ Agora podemos rodar nossa API com base no pacote, fazendo
 
 ```r
 opencpu::ocpu_start_app('preditorIMDb')
-## Creating new user config file: /home/travis/.local/share/opencpu/user.conf
-## Loading config from /home/travis/R/Library/opencpu/config/defaults.conf
-## Loading config from /home/travis/.local/share/opencpu/user.conf
-## Error in loadNamespace(name): there is no package called 'preditorIMDb'
 ```
 
 Para ver o código da função, basta rodar
@@ -340,7 +336,7 @@ Assim, basta acessar http://cran.ocpu.io para ter todos os pacotes do R em suas 
 r <- httr::POST("http://cran.ocpu.io/praise/R/praise/json")
 httr::content(r)
 ## [[1]]
-## [1] "You are polished!"
+## [1] "You are impeccable!"
 ```
 
 (o pacote `praise` é um gerador de elogios aleatório)
@@ -409,12 +405,14 @@ arq <- captcha_download_tjmg()
 
 
 ```r
+library(decryptr)
 arq <- "./captcha5fdb51a0b41b.jpeg"
 arq %>% 
   read_captcha() %>% 
   plot()
-## Error in read_captcha(.): could not find function "read_captcha"
 ```
+
+<img src="figures//unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="60%" height="60%" />
 
 
 
@@ -437,10 +435,7 @@ base64 <- base64enc::base64encode(readr::read_file_raw(path))
 r <- httr::POST('http://localhost:8888/predict_tjmg', 
                 body = list(img = base64), 
                 encode = 'json')
-## Error in curl::curl_fetch_memory(url, handle = handle): Failed to connect to localhost port 8888: Connection refused
 httr::content(r, 'text')
-## No encoding supplied: defaulting to UTF-8.
-## [1] "[\"aonde eu chego a mulherada encosta\\neu li|ga a gente dorminha\\ntá rolando chegando bem ino\\nperde que eu quero as cavadiras um dia passar\\nde casa pena pelo mais deeiro ié ter o que eu tento pra não te deixar\\neu pode chegar no peita \\nvai provar diferente tanto pra gente ninguém\\ní por cima\\n\\nna raledala é que não tá pode mais semor\\ne quem não v\\n<truncated>\"]\n"
 ```
 
 ## Fazendo mais com o plumber
