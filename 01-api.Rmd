@@ -358,10 +358,11 @@ r <- httr::POST('http://localhost:8888/predict_tjmg',
 httr::content(r, 'text')
 ```
 
-
 ## Fazendo mais com o plumber
 
 O `plumber` também pode ser utilizado numa solução Docker. O Docker é um serviço de containers, e um container é uma espécie de máquina virtual que roda somente a sua aplicação.
 
-A vantagem de usar Docker é que você seria capaz de instalar sua API em qualquer servidor, sem precisar configurar muitas coisas
+A vantagem de usar Docker é que você seria capaz de instalar sua API em qualquer servidor, sem precisar configurar muitas coisas na máquina.
+
+Para ver como usar plumber com Docker, siga a documentação deste link: https://www.rplumber.io/docs/hosting.html#docker.
 
