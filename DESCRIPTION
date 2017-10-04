@@ -14,9 +14,10 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Remotes:
-    curso-r/puBuild
+    curso-r/puBuild,
+    decryptr/decryptr
 Imports:
-  puBuild,
-  tutorial,
+    puBuild,
+    tutorial,
     emo,
     decryptr
