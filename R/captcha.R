@@ -1,6 +1,11 @@
 library(magrittr)
 library(decryptr)
 
+if (is.null(tensorflow::tf_version())) {
+  tensorflow::install_tensorflow()
+  keras::install_keras()
+}
+
 reticulate::py_available(TRUE)
 suppressMessages(suppressWarnings({
   rfb_model <- decryptrModels::read_model('rfb')
