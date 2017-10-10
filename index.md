@@ -1,6 +1,6 @@
 ---
-title: Introdução
-date: '2017-10-04'
+title: 'Construindo APIs'
+date: '2017-10-10'
 ---
 
 
@@ -336,7 +336,7 @@ Assim, basta acessar http://cran.ocpu.io para ter todos os pacotes do R em suas 
 r <- httr::POST("http://cran.ocpu.io/praise/R/praise/json")
 httr::content(r)
 ## [[1]]
-## [1] "You are impeccable!"
+## [1] "You are amazing!"
 ```
 
 (o pacote `praise` é um gerador de elogios aleatório)
@@ -349,17 +349,19 @@ Por exemplo, o post da Curso-R chamado [Aquele 1% é deep learning](http://curso
 ```r
 r <- httr::POST("http://jtrecenti.ocpu.io/safadao/R/gen/json")
 cat(httr::content(r)[[1]])
-## aonde eu chego a mulherada encosta
-## eu li|ga a gente dorminha
-## tá rolando chegando bem ino
-## perde que eu quero as cavadiras um dia passar
-## de casa pena pelo mais deeiro ié ter o que eu tento pra não te deixar
-## eu pode chegar no peita 
-## vai provar diferente tanto pra gente ninguém
-## í por cima
+## meu coração apaixonado atormentado em do| seu jeito,o desce
+## to com casa é a era
+## eu descanto com os os mais de som do sonhar
 ## 
-## na raledala é que não tá pode mais semor
-## e quem não v
+## até o meu som ta sem você comigo
+## neu quia rolar repolho,
+## bom vamos ela tantar vito
+## você se dar seu ligo de uma carinha
+## 
+## quando em tote como corro só
+## que eu saio assim geito me chama
+## de canada desligar nasci eu iro
+## q
 ## <truncated>
 ```
 
